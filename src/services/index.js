@@ -1,2 +1,2 @@
-export * from './user.service';
-export * from './planet.service';
+export * from './swapi.service';
+//export * from './planet.service';

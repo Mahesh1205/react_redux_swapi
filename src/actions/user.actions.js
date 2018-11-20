@@ -1,7 +1,8 @@
-import { userConstants } from '../constants';
-import { userService } from '../services';
+
+import { swapiService,  } from '../services';
 import { alertActions } from './';
 import { history } from '../helpers';
+import { userConstants } from '../constants/user.constants';
 import _ from 'lodash';
 
 export const userActions = {
@@ -13,7 +14,7 @@ function login(username, password) {
     return dispatch => {
         dispatch(request({ username }));
 
-        userService.login(username, password)
+        swapiService.authenticateUser(username, password)
             .then(
                 user => {
                     if(!_.isEmpty(user)){
@@ -38,7 +39,7 @@ function login(username, password) {
 }
 
 function logout() {
-    userService.logout();
+    swapiService.logout();
     return { type: userConstants.LOGOUT };
 }
 
